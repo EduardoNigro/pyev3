@@ -1,4 +1,4 @@
-# Project Description
+# pyev3
 **pyev3** can be used to interact with the **LEGO Mindstorms EV3**.
 
 Send direct commands to the EVR from your PC (local host) using a USB or WiFi connection. **pyev3** is an alternative to [pybricks](https://pybricks.com/ev3-micropython/), which requires booting your EV3 brick from an SD card, and where micropython programs run in the EV3 memory. With **pyev3** you can run the EV3 as is. Just connect it to a USB port, or create a WiFi connection, and you're good to go!

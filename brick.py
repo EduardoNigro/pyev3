@@ -10,8 +10,8 @@ File I/O and LCD commands are left for those with a brave spirit.
 Note: Use code folding at the method level to improve readability.
 
 Author: Eduardo Nigro
-    rev 0.1
-    2021-09-29
+    rev 0.0.1
+    2021-10-24
 """
 import time
 import numpy as np

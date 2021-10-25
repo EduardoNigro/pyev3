@@ -3,8 +3,8 @@ io.py contains the classes used to generate the Direct Commands for the EV3
 brick. Direct Commands are grouped by Brick, Motor, and Sensor.
 
 Author: Eduardo Nigro
-    rev 0.1
-    2021-09-29
+    rev 0.0.1
+    2021-10-24
 """
 import struct
 import numpy as np

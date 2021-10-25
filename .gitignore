@@ -9,3 +9,5 @@ src/pyev3/__pycache__/devices.cpython-39.pyc
 tests/testmotor.py
 tests/testmotors.py
 __init__.py
+__pycache__/__init__.cpython-39.pyc
+__pycache__/devices.cpython-39.pyc

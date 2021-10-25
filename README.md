@@ -56,3 +56,6 @@ ev3.set_statuslight(mode='solid')
 ev3.close()
 print('Done.')
 ```
+
+### Note:
+**pyev3** was developed and tested on MS Windows 10. It uses [cython-hidapi](https://github.com/trezor/cython-hidapi) for the USB communication interface.

@@ -14,6 +14,8 @@ motor.output = 0
 motor.start()
 touch.reset_count()
 
+# Changing EV3 status light
+ev3.set_statuslight(mode='pulsing')
 # Running for 30 seconds
 print('Running ...')
 tcurr = 0
@@ -31,5 +33,6 @@ while tcurr <= 30:
 
 # Stopping motor and closing EV3 connection
 motor.stop()
+ev3.set_statuslight(mode='solid')
 ev3.close()
 print('Done.')

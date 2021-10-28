@@ -13,6 +13,11 @@ Interact with each one of the EV3 devices through simple methods and properties,
 * Infrared
 * Gyro
 
+## Install
+```
+py -m pip install pyev3
+```
+
 ## Example Code
 Start and stop a motor using the touch sensor. The motor speed is proportional to ambient light intensity.
 
@@ -57,5 +62,6 @@ ev3.close()
 print('Done.')
 ```
 
-### Note:
-**pyev3** was developed and tested on MS Windows 10. It uses [cython-hidapi](https://github.com/trezor/cython-hidapi) for the USB communication interface.
+### Notes:
+1. **pyev3** was developed and tested on MS Windows 10. It uses [cython-hidapi](https://github.com/trezor/cython-hidapi) for the USB communication interface.
+2. It's very likely it will also work on Unix and macOS.

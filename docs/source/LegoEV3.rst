@@ -17,6 +17,7 @@ Once the brick is powered up, you can use a PC to communicte with it in two ways
 
 .. image:: ../images/LegoEV3.png
 
+
 .. autoclass:: brick.LegoEV3
     :members:
     :private-members:

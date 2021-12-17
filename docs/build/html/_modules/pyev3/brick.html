@@ -38,7 +38,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../LegoEV3.html">LegoEV3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Motor.html">Motor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Sensor/index.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Touch.html">Touch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Color.html">Color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Ultrasonic.html">Ultrasonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Infrared.html">Infrared</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Gyro.html">Gyro</a></li>
 </ul>
 
         </div>
@@ -218,8 +222,14 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;connectedsensors&quot; is a read only attribute.&#39;</span><span class="p">)</span>
 
     <span class="c1"># BRICK PUBLIC METHODS</span>
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_commhandle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="viewcode-block" id="LegoEV3.close"><a class="viewcode-back" href="../../LegoEV3.html#pyev3.brick.LegoEV3.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the EV3 brick connection.</span>
+
+<span class="sd">        &gt;&gt;&gt; myev3.close()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_commhandle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="LegoEV3.display_info"><a class="viewcode-back" href="../../LegoEV3.html#pyev3.brick.LegoEV3.display_info">[docs]</a>    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

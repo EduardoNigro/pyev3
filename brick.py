@@ -151,6 +151,12 @@ class LegoEV3:
 
     # BRICK PUBLIC METHODS
     def close(self):
+        """
+        Close the EV3 brick connection.
+
+        >>> myev3.close()
+
+        """
         self._commhandle.close()
 
     def display_info(self):

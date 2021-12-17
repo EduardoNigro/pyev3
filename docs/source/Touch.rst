@@ -1,7 +1,7 @@
 Touch
 =====
 
-.. image:: ../../images/Touch.png
+.. image:: ../images/Touch.png
 
 .. autoclass:: pyev3.devices.Touch
     :members:

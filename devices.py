@@ -14,7 +14,6 @@ import time
 class Motor:
     """
     The class to represent the EV3 motor.
-    You can use Motor to interact with the EV3 motor.
     
     Set up a motor on output port 'B'
         >>> from pyev3.brick import LegoEV3
@@ -342,6 +341,7 @@ class Touch(Sensor):
     def output(self):
         """
         Contains the sensor output based on the `inputmode` (`read only`).
+
             * ``1`` or ``0``  (`inputmode='touch'`)
             * ``int`` (`inputmode='bump'`)
         
@@ -428,10 +428,11 @@ class Color(Sensor):
     def output(self):
         """
         Contains the sensor output based on the `inputmode` (`read only`).
+
             * ``0`` to ``100`` (`inputmode='ambient'`)
             * ``0`` to ``100`` (`inputmode='reflected'`)
             * ``blue``, ``green``, ``yellow``, ``red``, ``white``, ``brown``, ``unknown`` (`inputmode='color'`)
-            * `tuple` (``0`` to ``255``, ``0`` to ``255``, ``0`` to ``255``) (`inputmode='rgb'`)
+            * tuple of integers (``0`` to ``255``, ``0`` to ``255``, ``0`` to ``255``) (`inputmode='rgb'`)
         
         """
         data = self._read_output()
@@ -454,32 +455,33 @@ class Ultrasonic(Sensor):
     """
     The class to represent the EV3 ultrasonic sensor.
     
-    Properties
-    ----------
-    inputmode
-    - 'distance'
-    - 'listen'
-    output
-    - 0 to 250 (distance in cm)
-    - 0 or 1   (ultrasound presence)
-    
-    Example
-    -------
     Set up an ultrasonic sensor on port number 3
-    >>> from pyev3.brick import LegoEV3
-    >>> from pyev3.devices import Ultrasonic
-    >>> myev3 = LegoEV3(commtype='usb')
-    >>> mysensor = Ultrasonic(myev3, portnum=3, inputmode='distance')
-
-    See also
-    --------
-    LegoEV3, Motor, Touch, Color, Infrared, and Gyro
+        >>> from pyev3.brick import LegoEV3
+        >>> from pyev3.devices import Ultrasonic
+        >>> myev3 = LegoEV3(commtype='usb')
+        >>> mysensor = Ultrasonic(myev3, portnum=3, inputmode='distance')
 
     """
     def __init__(self, ev3handle, layer=1, portnum=1, inputmode=None):
-       
-        """ Class constructor """
+        """
+        Class constructor.
 
+        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+        :type ev3handle: object
+        :param layer:
+            The layer of the brick ``1`` or ``2`` in a daisy-chain
+            configuration.
+        :type layer: int
+        :param portnum:
+            The brick input port connected to the sensor.
+            Possible values are ``1``, ``2``, ``3``, or ``4``.
+        :type portnum: int
+        :param inputmode:
+            * ``distance`` measure distance to an object in cm
+            * ``listen`` presence of other ultrasound source
+        :type inputmode: str
+
+        """
         # Defining ultrasonic sensor mode parameters
         # [outputformat, mode, dataset]
         self.modepar = {
@@ -496,6 +498,13 @@ class Ultrasonic(Sensor):
 
     @property
     def output(self):
+        """
+        Contains the sensor output based on the `inputmode` (`read only`).
+
+            * ``0`` to ``250`` (`inputmode='distance'`)
+            * ``0`` or ``1`` (`inputmode='listen'`)
+        
+        """
         data = self._read_output()
         if self._inputmode == 'distance':
             result = np.float32(data[0])
@@ -512,50 +521,34 @@ class Infrared(Sensor):
     """
     The class to represent the EV3 infrared sensor.
     
-    Properties
-    ----------
-    inputmode
-    - 'proximity'
-    - 'seeker' (requires channel 1 and beacon on)
-    - 'remote'
-    output
-    - (proximity) : 0 to 100 (proximity to object)
-    - (seeker)    : tuple of integers (azymuth, proximity)
-                        azymuth   = -20 to 20
-                        proximity = 0 to 100
-    - (remote)    : tuple of integers (channel, buttoncode)
-                        channel 1, 2, 3, 4
-                        buttoncode
-                        0  = No button
-                        1  = Button 1
-                        2  = Button 2
-                        3  = Button 3
-                        4  = Button 4
-                        5  = Buttons 1 and 3
-                        6  = Buttons 1 and 4
-                        7  = Buttons 2 and 3
-                        8  = Buttons 2 and 4
-                        9  = Beacon Mode is on
-                        10 = Buttons 1 and 2
-                        11 = Buttons 3 and 4
-    
-    Example
-    -------
     Set up an infrared sensor on port number 4
-    >>> from pyev3.brick import LegoEV3
-    >>> from pyev3.devices import Infrared
-    >>> myev3 = LegoEV3(commtype='usb')
-    >>> mysensor = Infrared(myev3, portnum=4, inputmode='remote')
-
-    See also
-    --------
-    LegoEV3, Motor, Touch, Color, Ultrasonic, and Gyro
+        >>> from pyev3.brick import LegoEV3
+        >>> from pyev3.devices import Infrared
+        >>> myev3 = LegoEV3(commtype='usb')
+        >>> mysensor = Infrared(myev3, portnum=4, inputmode='remote')
 
     """
-    def __init__(self, ev3handle, layer=1, portnum=1, inputmode=None):
-       
-        """ Class constructor """
+    def __init__(self, ev3handle, layer=1, portnum=1, inputmode='proximity'):
+        """
+        Class constructor.
 
+        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+        :type ev3handle: object
+        :param layer:
+            The layer of the brick ``1`` or ``2`` in a daisy-chain
+            configuration.
+        :type layer: int
+        :param portnum:
+            The brick input port connected to the sensor.
+            Possible values are ``1``, ``2``, ``3``, or ``4``.
+        :type portnum: int
+        :param inputmode:
+            * ``proximity`` detect proximity to an object
+            * ``seeker`` searches beacon (`requires channel 1 and beacon on`)
+            * ``remote`` takes remote control input
+        :type inputmode: str
+
+        """
         # Defining infrared sensor mode parameters
         # [outputformat, mode, dataset]
         self.modepar = {
@@ -573,6 +566,29 @@ class Infrared(Sensor):
 
     @property
     def output(self):
+        """
+        Contains the sensor output based on the `inputmode` (`read only`).
+
+            * ``0`` to ``100`` (`inputmode='proximity'`)
+            * tuple of integers (``azymuth``, ``proximity``) (`inputmode='seeker'`)
+            * tuple of integers (``channel``, ``buttoncode``) (`inputmode='remote'`)
+            
+                * channel ``1``, ``2``, ``3``, ``4``
+                * buttoncode
+                * ``0``  = No button
+                * ``1``  = Button 1
+                * ``2``  = Button 2
+                * ``3``  = Button 3
+                * ``4``  = Button 4
+                * ``5``  = Buttons 1 and 3
+                * ``6``  = Buttons 1 and 4
+                * ``7``  = Buttons 2 and 3
+                * ``8``  = Buttons 2 and 4
+                * ``9``  = Beacon Mode is on
+                * ``10`` = Buttons 1 and 2
+                * ``11`` = Buttons 3 and 4
+
+        """
         data = self._read_output()
         if self._inputmode == 'proximity':
             result = int(data[0])
@@ -600,34 +616,34 @@ class Gyro(Sensor):
     """
     The class to represent the EV3 gyro sensor.
     
-    Properties
-    ----------
-    inputmode
-    - 'angle'             - integer (angular position in deg)
-    - 'rate'              - integer (angular speed up to 440deg/s)
-    - 'angle&rate'        - integers (rate, angle)
-    output
-    - integer (angular position in deg)
-    - integer (angular speed up to 440deg/s)
-    - tuple of integers (rate, angle)
-    
-    Example
-    -------
     Set up a gyro sensor on port number 1
-    >>> from pyev3.brick import LegoEV3
-    >>> from pyev3.devices import Gyro
-    >>> myev3 = LegoEV3(commtype='usb')
-    >>> mysensor = Gyro(myev3, portnum=1, inputmode='rate')
-
-    See also
-    --------
-    LegoEV3, Motor, Touch, Color, Ultrasonic, and Infrared
+        >>> from pyev3.brick import LegoEV3
+        >>> from pyev3.devices import Gyro
+        >>> myev3 = LegoEV3(commtype='usb')
+        >>> mysensor = Gyro(myev3, portnum=1, inputmode='rate')
 
     """
-    def __init__(self, ev3handle, layer=1, portnum=1, inputmode=None):
-       
-        """ Class constructor """
+    def __init__(self, ev3handle, layer=1, portnum=1, inputmode='angle'):
+        """
+        Class constructor.
 
+        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+        :type ev3handle: object
+        :param layer:
+            The layer of the brick ``1`` or ``2`` in a daisy-chain
+            configuration.
+        :type layer: int
+        :param portnum:
+            The brick input port connected to the sensor.
+            Possible values are ``1``, ``2``, ``3``, or ``4``.
+        :type portnum: int
+        :param inputmode:
+            * ``angle`` angular position in `deg`
+            * ``rate`` angular speed up to `440 deg/s`
+            * ``rate&angle`` angular rate and position
+        :type inputmode: str
+
+        """
         # Defining gyro sensor mode parameters
         # [outputformat, mode, dataset]
         self.modepar = {
@@ -645,6 +661,14 @@ class Gyro(Sensor):
 
     @property
     def output(self):
+        """
+        Contains the sensor output based on the `inputmode` (`read only`).
+
+            * integer ``angle`` (`inputmode='angle'`)
+            * integer ``rate`` (`inputmode='rate'`)
+            * tuple of integers (``rate``, ``angle``) (`inputmode='rate&angle'`)
+        
+        """
         data = self._read_output()
         if self._inputmode == 'angle':
             result = int(data[0])

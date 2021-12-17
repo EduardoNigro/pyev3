@@ -8,7 +8,11 @@ pyev3 API documentation
 
    LegoEV3
    Motor
-   Sensor/index
+   Touch
+   Color
+   Ultrasonic
+   Infrared
+   Gyro
 
 
 Send direct commands to the **EV3** from your PC using a USB or WiFi connection.

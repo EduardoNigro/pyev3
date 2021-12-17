@@ -18,6 +18,7 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.append(os.path.abspath('../..'))
 sys.path.append(os.path.abspath('../../..'))
+print(sys.path)
 import sphinx_rtd_theme
 
 

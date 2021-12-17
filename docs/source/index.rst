@@ -1,6 +1,6 @@
 
-pyev3 API documentation
-=======================
+pyev3
+=====
 
 .. toctree::
    :caption: pyev3 Classes
@@ -22,7 +22,8 @@ in the brick's memory. With **pyev3** you can use Python to run the EV3 as is. J
 it to a USB port, or create a WiFi connection, and you're good to go!
 
 
-**Step 1: Install pyev3**
+Step 1: Install pyev3
+---------------------
 
 If you already have *Python* and an *IDE* (*Integrated Development Environment*) to go along with it,
 just install the **pyev3** package:
@@ -32,7 +33,9 @@ just install the **pyev3** package:
 Otherwise, start by installing `Python <https://www.python.org/downloads/>`__ and then an IDE.
 If you want to code like a pro, I strongly encourage `VSCode <https://code.visualstudio.com/download>`__.
 
-**Step 2: Code away!**
+
+Step 2: Code away!
+------------------
 
 Once the ``pip`` installation has finished, reference the different classes in the menu on the left
 to see how to interact with motors, sensors and the EV3 brick itself.
@@ -79,3 +82,10 @@ You can also start and stop the motor using the touch sensor!
    ev3.set_statuslight(mode='solid')
    ev3.close()
    print('Done.')   
+
+
+Issues and questions
+--------------------
+
+If you have a feature request, a bug report, or even a question, please open an
+`issue on GitHub <https://github.com/gpiozero/gpiozero/issues/new>`__.

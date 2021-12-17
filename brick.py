@@ -25,15 +25,27 @@ class LegoEV3:
     You can use LegoEV3 to interact with the EV3 brick.
 
     Set up USB connection between host and EV3 brick.
+
         >>> from pyev3.brick import LegoEV3
         >>> myev3 = LegoEV3(commtype='usb')
         >>> myev3.display_info()
         >>> myev3.close()
 
     Set up WiFi connection between host and EV3 brick
+
         >>> myev3 = LegoEV3(commtype='wifi', IPaddress='192.168.0.19, deviceID='001653470e58')
         >>> myev3.display_info()
         >>> myev3.close()
+
+    :param commtype: The type of communication with the brick. ``'usb'`` or ``'wifi'``.
+    :type commtype: str
+    :param IPaddress: The IP address assigned to the EV3 brick.
+    :type IPaddress: str
+    :param deviceID:
+        The individual device ID of the EV3 brick.
+        Connect to the brick using `commtype='usb'` and use the
+        `display_info()` method to retrieve the ID of the brick.
+    :type deviceID: str
 
     .. note::
         1. Always use the `close()` method before opening a new connection.
@@ -43,16 +55,6 @@ class LegoEV3:
     def __init__(self, commtype='usb', IPaddress=None, deviceID=None):
         """
         Class constructor.
-
-        :param commtype: The type of communication with the brick. ``usb`` or ``wifi``.
-        :type commtype: str
-        :param IPaddress: The IP address assigned to the EV3 brick.
-        :type IPaddress: str
-        :param deviceID:
-            The individual device ID of the EV3 brick.
-            Connect to the brick using `commtype='usb'` and use the
-            `display_info()` method to retrieve the ID of the brick.
-        :type deviceID: str
 
         """
         # Assigning private property developer mode flag
@@ -179,9 +181,9 @@ class LegoEV3:
         """
         Set the status light of the EV3 brick.
 
-        :param mode: The light mode: ``solid``, ``pulsing``, ``off``
+        :param mode: The light mode: ``'solid'``, ``'pulsing'``, ``'off'``
         :type mode: str
-        :param color: The light color: ``green``, ``orange``, ``red``
+        :param color: The light color: ``'green'``, ``'orange'``, ``'red'``
         :type color: str
 
         >>> myev3.set_statuslight(mode='pulsing', color='orange')

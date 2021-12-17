@@ -20,4 +20,3 @@ Once the brick is powered up, you can use a PC to communicte with it in two ways
 .. autoclass:: pyev3.brick.LegoEV3
     :members:
     :private-members:
-    :special-members: __init__

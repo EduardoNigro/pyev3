@@ -5,5 +5,4 @@ Color
 
 .. autoclass:: pyev3.devices.Color
     :members:
-    :special-members: __init__
     :inherited-members: display_info

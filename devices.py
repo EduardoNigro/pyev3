@@ -16,34 +16,37 @@ class Motor:
     The class to represent the EV3 motor.
     
     Set up a motor on output port 'B'
+
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Motor
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mymotor = Motor(myev3, port='B')
 
-    Set up a motor on output port ``A`` of the first brick and port ``B`` of the second brick.
+    Set up a motor on output port ``A`` of the first brick and port ``B``
+    of the second brick.
+
         >>> mymotor1 = Motor(myev3, layer=1, port='A')
         >>> mymotor2 = Motor(myev3, layer=2, port='B')
 
+    :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+    :type ev3handle: object
+    :param layer:
+        The layer of the brick ``1`` or ``2`` in a daisy-chain
+        configuration.
+    :type layer: int
+    :param port:
+        The brick output port connected to the motor.
+        Possible values are ``'A'``, ``'B'``, ``'C'``, or ``'D'``.
+    :type port: str
+
     .. note::
         1. If EV3 bricks are connected in a daisy-chain configuration,
-        set the input parameter ``layer`` to the appropriate number.
+        set the input parameter `layer` to the appropriate number.
 
     """
     def __init__(self, ev3handle, layer=1, port='A'):
         """
         Class constructor.
-
-        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
-        :type ev3handle: object
-        :param layer:
-            The layer of the brick ``1`` or ``2`` in a daisy-chain
-            configuration.
-        :type layer: int
-        :param port:
-            The brick output port connected to the motor.
-            Possible values are ``A``, ``B``, ``C``, or ``D``.
-        :type port: str
 
         """
         # Assigning input attributes
@@ -60,7 +63,7 @@ class Motor:
     def outputmode(self):
         """
         Contains the motor output mode.
-        It can be either ``speed`` or ``power`` (`read/write`).
+        It can be either ``'speed'`` or ``'power'`` (`read/write`).
         
         """
         return self._outputmode
@@ -108,7 +111,7 @@ class Motor:
     @property
     def angle(self):
         """
-        Contains the angular position of the motor in `degrees` (`read only`).
+        Contains the angular position of the motor in degrees (`read only`).
         
         """
         return self._ev3handle._get_outputcount(
@@ -144,7 +147,7 @@ class Motor:
         Stop the EV3 motor.
 
         :param brake:
-            The brake option of the motor ``on`` or ``off``.
+            The brake option of the motor ``'on'`` or ``'off'``.
             Can be used to hold the motor position.
         :type brake: str
 
@@ -297,30 +300,31 @@ class Touch(Sensor):
     The class to represent the EV3 touch sensor.
     
     Set up a touch sensor on port number 1
+
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Touch
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mysensor = Touch(myev3, portnum=1, inputmode='bump')
 
+    :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+    :type ev3handle: object
+    :param layer:
+        The layer of the brick ``1`` or ``2`` in a daisy-chain
+        configuration.
+    :type layer: int
+    :param portnum:
+        The brick input port connected to the sensor.
+        Possible values are ``1``, ``2``, ``3``, or ``4``.
+    :type portnum: int
+    :param inputmode:
+        * ``'touch'`` to check the button state (`pressed or released`)
+        * ``'bump'`` to count the number of press/release events
+    :type inputmode: str
+
     """
     def __init__(self, ev3handle, layer=1, portnum=1, inputmode='touch'):
         """
         Class constructor.
-
-        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
-        :type ev3handle: object
-        :param layer:
-            The layer of the brick ``1`` or ``2`` in a daisy-chain
-            configuration.
-        :type layer: int
-        :param portnum:
-            The brick input port connected to the sensor.
-            Possible values are ``1``, ``2``, ``3``, or ``4``.
-        :type portnum: int
-        :param inputmode:
-            * ``touch`` to check the button state (`pressed or released`)
-            * ``bump`` to count the number `press/release` events
-        :type inputmode: str
 
         """
         # Defining touch sensor mode parameters
@@ -369,32 +373,33 @@ class Color(Sensor):
     The class to represent the EV3 color sensor.
 
     Set up a color sensor on port number 2
+
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Color
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mysensor = Color(myev3, portnum=2, inputmode='rgb')
 
+    :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+    :type ev3handle: object
+    :param layer:
+        The layer of the brick ``1`` or ``2`` in a daisy-chain
+        configuration.
+    :type layer: int
+    :param portnum:
+        The brick input port connected to the sensor.
+        Possible values are ``1``, ``2``, ``3``, or ``4``.
+    :type portnum: int
+    :param inputmode:
+        * ``'ambient'`` ambient light intensity
+        * ``'reflected'`` reflected light intensity
+        * ``'color'`` surface color
+        * ``'rgb'`` surface color RGB components
+    :type inputmode: str
+
     """
     def __init__(self, ev3handle, layer=1, portnum=1, inputmode='ambient'):
         """
         Class constructor.
-
-        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
-        :type ev3handle: object
-        :param layer:
-            The layer of the brick ``1`` or ``2`` in a daisy-chain
-            configuration.
-        :type layer: int
-        :param portnum:
-            The brick input port connected to the sensor.
-            Possible values are ``1``, ``2``, ``3``, or ``4``.
-        :type portnum: int
-        :param inputmode:
-            * ``ambient`` ambient light intensity
-            * ``reflected`` reflected light intensity
-            * ``color`` surface color
-            * ``rgb`` surface color `RGB` components
-        :type inputmode: str
 
         """
         # Defining color sensor mode parameters
@@ -431,7 +436,7 @@ class Color(Sensor):
 
             * ``0`` to ``100`` (`inputmode='ambient'`)
             * ``0`` to ``100`` (`inputmode='reflected'`)
-            * ``blue``, ``green``, ``yellow``, ``red``, ``white``, ``brown``, ``unknown`` (`inputmode='color'`)
+            * ``'blue'``, ``'green'``, ``'yellow'``, ``'red'``, ``'white'``, ``'brown'``, ``'unknown'`` (`inputmode='color'`)
             * tuple of integers (``0`` to ``255``, ``0`` to ``255``, ``0`` to ``255``) (`inputmode='rgb'`)
         
         """
@@ -456,30 +461,31 @@ class Ultrasonic(Sensor):
     The class to represent the EV3 ultrasonic sensor.
     
     Set up an ultrasonic sensor on port number 3
+
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Ultrasonic
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mysensor = Ultrasonic(myev3, portnum=3, inputmode='distance')
 
+    :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+    :type ev3handle: object
+    :param layer:
+        The layer of the brick ``1`` or ``2`` in a daisy-chain
+        configuration.
+    :type layer: int
+    :param portnum:
+        The brick input port connected to the sensor.
+        Possible values are ``1``, ``2``, ``3``, or ``4``.
+    :type portnum: int
+    :param inputmode:
+        * ``'distance'`` measure distance to an object in cm
+        * ``'listen'`` presence of other ultrasound source
+    :type inputmode: str
+
     """
     def __init__(self, ev3handle, layer=1, portnum=1, inputmode=None):
         """
         Class constructor.
-
-        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
-        :type ev3handle: object
-        :param layer:
-            The layer of the brick ``1`` or ``2`` in a daisy-chain
-            configuration.
-        :type layer: int
-        :param portnum:
-            The brick input port connected to the sensor.
-            Possible values are ``1``, ``2``, ``3``, or ``4``.
-        :type portnum: int
-        :param inputmode:
-            * ``distance`` measure distance to an object in cm
-            * ``listen`` presence of other ultrasound source
-        :type inputmode: str
 
         """
         # Defining ultrasonic sensor mode parameters
@@ -522,31 +528,32 @@ class Infrared(Sensor):
     The class to represent the EV3 infrared sensor.
     
     Set up an infrared sensor on port number 4
+
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Infrared
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mysensor = Infrared(myev3, portnum=4, inputmode='remote')
 
+    :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+    :type ev3handle: object
+    :param layer:
+        The layer of the brick ``1`` or ``2`` in a daisy-chain
+        configuration.
+    :type layer: int
+    :param portnum:
+        The brick input port connected to the sensor.
+        Possible values are ``1``, ``2``, ``3``, or ``4``.
+    :type portnum: int
+    :param inputmode:
+        * ``'proximity'`` detect proximity to an object
+        * ``'seeker'`` searches beacon (`requires channel 1 and beacon on`)
+        * ``'remote'`` takes remote control input
+    :type inputmode: str
+
     """
     def __init__(self, ev3handle, layer=1, portnum=1, inputmode='proximity'):
         """
         Class constructor.
-
-        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
-        :type ev3handle: object
-        :param layer:
-            The layer of the brick ``1`` or ``2`` in a daisy-chain
-            configuration.
-        :type layer: int
-        :param portnum:
-            The brick input port connected to the sensor.
-            Possible values are ``1``, ``2``, ``3``, or ``4``.
-        :type portnum: int
-        :param inputmode:
-            * ``proximity`` detect proximity to an object
-            * ``seeker`` searches beacon (`requires channel 1 and beacon on`)
-            * ``remote`` takes remote control input
-        :type inputmode: str
 
         """
         # Defining infrared sensor mode parameters
@@ -575,18 +582,19 @@ class Infrared(Sensor):
             
                 * channel ``1``, ``2``, ``3``, ``4``
                 * buttoncode
-                * ``0``  = No button
-                * ``1``  = Button 1
-                * ``2``  = Button 2
-                * ``3``  = Button 3
-                * ``4``  = Button 4
-                * ``5``  = Buttons 1 and 3
-                * ``6``  = Buttons 1 and 4
-                * ``7``  = Buttons 2 and 3
-                * ``8``  = Buttons 2 and 4
-                * ``9``  = Beacon Mode is on
-                * ``10`` = Buttons 1 and 2
-                * ``11`` = Buttons 3 and 4
+
+                    * ``0``  = No button
+                    * ``1``  = Button 1
+                    * ``2``  = Button 2
+                    * ``3``  = Button 3
+                    * ``4``  = Button 4
+                    * ``5``  = Buttons 1 and 3
+                    * ``6``  = Buttons 1 and 4
+                    * ``7``  = Buttons 2 and 3
+                    * ``8``  = Buttons 2 and 4
+                    * ``9``  = Beacon Mode is on
+                    * ``10`` = Buttons 1 and 2
+                    * ``11`` = Buttons 3 and 4
 
         """
         data = self._read_output()
@@ -617,31 +625,32 @@ class Gyro(Sensor):
     The class to represent the EV3 gyro sensor.
     
     Set up a gyro sensor on port number 1
+
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Gyro
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mysensor = Gyro(myev3, portnum=1, inputmode='rate')
 
+    :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
+    :type ev3handle: object
+    :param layer:
+        The layer of the brick ``1`` or ``2`` in a daisy-chain
+        configuration.
+    :type layer: int
+    :param portnum:
+        The brick input port connected to the sensor.
+        Possible values are ``1``, ``2``, ``3``, or ``4``.
+    :type portnum: int
+    :param inputmode:
+        * ``'angle'`` angular position in deg
+        * ``'rate'`` angular speed up to 440 deg/s
+        * ``'angle&rate'`` angular position and rate
+    :type inputmode: str
+
     """
     def __init__(self, ev3handle, layer=1, portnum=1, inputmode='angle'):
         """
         Class constructor.
-
-        :param ev3handle: ``LegoEV3`` instance representing the EV3 brick.
-        :type ev3handle: object
-        :param layer:
-            The layer of the brick ``1`` or ``2`` in a daisy-chain
-            configuration.
-        :type layer: int
-        :param portnum:
-            The brick input port connected to the sensor.
-            Possible values are ``1``, ``2``, ``3``, or ``4``.
-        :type portnum: int
-        :param inputmode:
-            * ``angle`` angular position in `deg`
-            * ``rate`` angular speed up to `440 deg/s`
-            * ``rate&angle`` angular rate and position
-        :type inputmode: str
 
         """
         # Defining gyro sensor mode parameters
@@ -666,7 +675,7 @@ class Gyro(Sensor):
 
             * integer ``angle`` (`inputmode='angle'`)
             * integer ``rate`` (`inputmode='rate'`)
-            * tuple of integers (``rate``, ``angle``) (`inputmode='rate&angle'`)
+            * tuple of integers (``angle``, ``rate``) (`inputmode='angle&rate'`)
         
         """
         data = self._read_output()

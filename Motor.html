@@ -75,6 +75,94 @@
 <h1>Motor<a class="headerlink" href="#motor" title="Permalink to this headline"></a></h1>
 <img alt="_images/Motor-Large.png" src="_images/Motor-Large.png" />
 <img alt="_images/Motor-Medium.png" src="_images/Motor-Medium.png" />
+<dl class="class">
+<dt id="devices.Motor">
+<em class="property">class </em><code class="sig-prename descclassname">devices.</code><code class="sig-name descname">Motor</code><span class="sig-paren">(</span><em class="sig-param">ev3handle</em>, <em class="sig-param">layer=1</em>, <em class="sig-param">port='A'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/devices.html#Motor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#devices.Motor" title="Permalink to this definition"></a></dt>
+<dd><p>The class to represent the EV3 motor.</p>
+<p>Set up a motor on output port ‘B’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.brick</span> <span class="kn">import</span> <span class="n">LegoEV3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.devices</span> <span class="kn">import</span> <span class="n">Motor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span> <span class="o">=</span> <span class="n">LegoEV3</span><span class="p">(</span><span class="n">commtype</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set up a motor on output port <code class="docutils literal notranslate"><span class="pre">A</span></code> of the first brick and port <code class="docutils literal notranslate"><span class="pre">B</span></code>
+of the second brick.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor1</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor2</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ev3handle</strong> (<em>object</em>) – <code class="docutils literal notranslate"><span class="pre">LegoEV3</span></code> instance representing the EV3 brick.</p></li>
+<li><p><strong>layer</strong> (<em>int</em>) – The layer of the brick <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code> in a daisy-chain
+configuration.</p></li>
+<li><p><strong>port</strong> (<em>str</em>) – The brick output port connected to the motor.
+Possible values are <code class="docutils literal notranslate"><span class="pre">'A'</span></code>, <code class="docutils literal notranslate"><span class="pre">'B'</span></code>, <code class="docutils literal notranslate"><span class="pre">'C'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'D'</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1. If EV3 bricks are connected in a daisy-chain configuration,
+set the input parameter <cite>layer</cite> to the appropriate number.</p>
+</div>
+<dl class="method">
+<dt id="devices.Motor.reset_angle">
+<code class="sig-name descname">reset_angle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/devices.html#Motor.reset_angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#devices.Motor.reset_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the encoder output angle of the EV3 motor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor</span><span class="o">.</span><span class="n">reset_angle</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Motor.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/devices.html#Motor.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#devices.Motor.start" title="Permalink to this definition"></a></dt>
+<dd><p>Start the EV3 motor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Motor.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><em class="sig-param">brake='off'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/devices.html#Motor.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#devices.Motor.stop" title="Permalink to this definition"></a></dt>
+<dd><p>Stop the EV3 motor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>brake</strong> (<em>str</em>) – The brake option of the motor <code class="docutils literal notranslate"><span class="pre">'on'</span></code> or <code class="docutils literal notranslate"><span class="pre">'off'</span></code>.
+Can be used to hold the motor position.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="n">brake</span><span class="o">=</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Motor.angle">
+<em class="property">property </em><code class="sig-name descname">angle</code><a class="headerlink" href="#devices.Motor.angle" title="Permalink to this definition"></a></dt>
+<dd><p>Contains the angular position of the motor in degrees (<cite>read only</cite>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Motor.output">
+<em class="property">property </em><code class="sig-name descname">output</code><a class="headerlink" href="#devices.Motor.output" title="Permalink to this definition"></a></dt>
+<dd><p>Contains the motor output level as a percentage.
+Values can be between <code class="docutils literal notranslate"><span class="pre">-100</span></code> or <code class="docutils literal notranslate"><span class="pre">100</span></code> (<cite>read/write</cite>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Motor.outputmode">
+<em class="property">property </em><code class="sig-name descname">outputmode</code><a class="headerlink" href="#devices.Motor.outputmode" title="Permalink to this definition"></a></dt>
+<dd><p>Contains the motor output mode.
+It can be either <code class="docutils literal notranslate"><span class="pre">'speed'</span></code> or <code class="docutils literal notranslate"><span class="pre">'power'</span></code> (<cite>read/write</cite>).</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

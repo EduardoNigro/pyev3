@@ -74,6 +74,86 @@
   <section id="infrared">
 <h1>Infrared<a class="headerlink" href="#infrared" title="Permalink to this headline"></a></h1>
 <img alt="_images/Infrared.png" src="_images/Infrared.png" />
+<dl class="class">
+<dt id="devices.Infrared">
+<em class="property">class </em><code class="sig-prename descclassname">devices.</code><code class="sig-name descname">Infrared</code><span class="sig-paren">(</span><em class="sig-param">ev3handle</em>, <em class="sig-param">layer=1</em>, <em class="sig-param">portnum=1</em>, <em class="sig-param">inputmode='proximity'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/devices.html#Infrared"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#devices.Infrared" title="Permalink to this definition"></a></dt>
+<dd><p>The class to represent the EV3 infrared sensor.</p>
+<p>Set up an infrared sensor on port number 4</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.brick</span> <span class="kn">import</span> <span class="n">LegoEV3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.devices</span> <span class="kn">import</span> <span class="n">Infrared</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span> <span class="o">=</span> <span class="n">LegoEV3</span><span class="p">(</span><span class="n">commtype</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mysensor</span> <span class="o">=</span> <span class="n">Infrared</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">portnum</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">inputmode</span><span class="o">=</span><span class="s1">&#39;remote&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ev3handle</strong> (<em>object</em>) – <code class="docutils literal notranslate"><span class="pre">LegoEV3</span></code> instance representing the EV3 brick.</p></li>
+<li><p><strong>layer</strong> (<em>int</em>) – The layer of the brick <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code> in a daisy-chain
+configuration.</p></li>
+<li><p><strong>portnum</strong> (<em>int</em>) – The brick input port connected to the sensor.
+Possible values are <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, or <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p></li>
+<li><p><strong>inputmode</strong> (<em>str</em>) – <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'proximity'</span></code> detect proximity to an object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'seeker'</span></code> searches beacon (<cite>requires channel 1 and beacon on</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'remote'</span></code> takes remote control input</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="devices.Infrared.display_info">
+<code class="sig-name descname">display_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#devices.Infrared.display_info" title="Permalink to this definition"></a></dt>
+<dd><p>Displays a summary with the sensor information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Infrared.inputmode">
+<em class="property">property </em><code class="sig-name descname">inputmode</code><a class="headerlink" href="#devices.Infrared.inputmode" title="Permalink to this definition"></a></dt>
+<dd><p>Contains the sensor input mode.
+Use this to change the mode on the fly (<cite>read/write</cite>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="devices.Infrared.output">
+<em class="property">property </em><code class="sig-name descname">output</code><a class="headerlink" href="#devices.Infrared.output" title="Permalink to this definition"></a></dt>
+<dd><p>Contains the sensor output based on the <cite>inputmode</cite> (<cite>read only</cite>).</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code> (<cite>inputmode=’proximity’</cite>)</p></li>
+<li><p>tuple of integers (<code class="docutils literal notranslate"><span class="pre">azymuth</span></code>, <code class="docutils literal notranslate"><span class="pre">proximity</span></code>) (<cite>inputmode=’seeker’</cite>)</p></li>
+<li><p>tuple of integers (<code class="docutils literal notranslate"><span class="pre">channel</span></code>, <code class="docutils literal notranslate"><span class="pre">buttoncode</span></code>) (<cite>inputmode=’remote’</cite>)</p>
+<blockquote>
+<div><ul>
+<li><p>channel <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code></p></li>
+<li><p>buttoncode</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  = No button</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>  = Button 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>  = Button 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code>  = Button 3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code>  = Button 4</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code>  = Buttons 1 and 3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code>  = Buttons 1 and 4</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">7</span></code>  = Buttons 2 and 3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">8</span></code>  = Buttons 2 and 4</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">9</span></code>  = Beacon Mode is on</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">10</span></code> = Buttons 1 and 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">11</span></code> = Buttons 3 and 4</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

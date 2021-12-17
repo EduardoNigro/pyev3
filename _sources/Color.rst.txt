@@ -3,6 +3,6 @@ Color
 
 .. image:: ../images/Color.png
 
-.. autoclass:: pyev3.devices.Color
+.. autoclass:: devices.Color
     :members:
     :inherited-members: display_info

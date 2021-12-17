@@ -3,6 +3,6 @@ Touch
 
 .. image:: ../images/Touch.png
 
-.. autoclass:: pyev3.devices.Touch
+.. autoclass:: devices.Touch
     :members:
     :inherited-members: display_info

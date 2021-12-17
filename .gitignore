@@ -1,9 +1,7 @@
-setup.py
-ev3_workspace.code-workspace
+pyev3.code-workspace
 pyproject.toml
+setup.py
 __init__.py
-__pycache__/__init__.cpython-39.pyc
-__pycache__/devices.cpython-39.pyc
-__pycache__/brick.cpython-39.pyc
-__pycache__/comm.cpython-39.pyc
-__pycache__/io.cpython-39.pyc
+__pycache__/
+dist/
+src/

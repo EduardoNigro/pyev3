@@ -21,67 +21,38 @@ from pyev3 import comm
 
 class LegoEV3:
     """
-    The class to represent the LEGO EV3 brick
+    The class to represent the LEGO EV3 brick.
     You can use LegoEV3 to interact with the EV3 brick.
 
-    Properties
-    ----------
-    devmode             - Flag (True or False) to display cmd/reply stats
-    batterylevel        - EV3 battery level (0 to 100 %)
-    connectedsensors    - List of connected sensors
-    
-    Methods
-    -------
-    close()             - Closes the current communication connection
-    display_info()      - Displays summary info about the brick
-    set_statuslight()   - Sets EV3 LED status light
-    play_tone()         - Plays a tone on EV3 speaker
-
-    Example
-    -------
     Set up USB connection between host and EV3 brick.
-    >>> from pyev3.brick import LegoEV3
-    >>> myev3 = LegoEV3(commtype='usb')
-    >>> myev3.display_info()
-    >>> myev3.close()
+        >>> from pyev3.brick import LegoEV3
+        >>> myev3 = LegoEV3(commtype='usb')
+        >>> myev3.display_info()
+        >>> myev3.close()
 
     Set up WiFi connection between host and EV3 brick
-    >>> myev3 = LegoEV3(commtype='wifi',
-                        IPaddress='192.168.0.19, deviceID='001653470e58')
-    >>> myev3.display_info()
-    >>> myev3.close()
+        >>> myev3 = LegoEV3(commtype='wifi', IPaddress='192.168.0.19, deviceID='001653470e58')
+        >>> myev3.display_info()
+        >>> myev3.close()
 
-    Notes
-    -----
-    1. Always use the close() method before opening a new connection.
-    2. Try a USB connection first. It's easier to set up and much faster.
-
-    See also
-    --------
-    Motor, Touch, Color, Ultrasonic, Infrared, and Gyro
+    .. note::
+        1. Always use the `close()` method before opening a new connection.
+        2. Try a USB connection first. It's easier to set up and much faster.
 
     """
     def __init__(self, commtype='usb', IPaddress=None, deviceID=None):
         """
         Class constructor.
 
-        Parameters
-        ----------
-        commtype : str
-            The type of communication with the brick.
-            Default value is `usb`. Possible values are `usb` or `wifi`
-        IPaddress : str
-            The IP address assigned to the EV3 brick.
-            Default value is None
-        deviceID : str
+        :param commtype: The type of communication with the brick. ``usb`` or ``wifi``.
+        :type commtype: str
+        :param IPaddress: The IP address assigned to the EV3 brick.
+        :type IPaddress: str
+        :param deviceID:
             The individual device ID of the EV3 brick.
-            Connect to the brick using commtype='usb' and use the
-            display_info() method to retrieve the ID of the brick.
-            Default value is None.
-
-        Returns
-        -------
-        None.
+            Connect to the brick using `commtype='usb'` and use the
+            `display_info()` method to retrieve the ID of the brick.
+        :type deviceID: str
 
         """
         # Assigning private property developer mode flag
@@ -138,6 +109,12 @@ class LegoEV3:
     # GET/SET METHODS (PUBLIC PROPERTIES)
     @property
     def devmode(self):
+        """
+        Contains a developer mode flag. Default is ``False``. 
+        When ``True``, communication info is displayed after
+        each direct command (`read/write`).
+        
+        """
         # Getting private value
         return self._devmode
 
@@ -150,6 +127,10 @@ class LegoEV3:
 
     @property
     def batterylevel(self):
+        """
+        Contains the EV3 battery level in `%` (`read only`).
+        
+        """
         return self._read_batterylevel()
 
     @batterylevel.setter
@@ -158,6 +139,10 @@ class LegoEV3:
 
     @property
     def connectedsensors(self):
+        """
+        Contains a list with the sensors connected to the EV3 (`read only`).
+        
+        """
         return self._read_inputdevicelist()
 
     @connectedsensors.setter
@@ -169,6 +154,10 @@ class LegoEV3:
         self._commhandle.close()
 
     def display_info(self):
+        """
+        Displays a summary with the brick information.
+        
+        """
         print('____________________________________________________________')
         print('Brick Name : ' + self._brickname)
         print('Brick ID : ' + self._brickID)
@@ -184,21 +173,11 @@ class LegoEV3:
         """
         Set the status light of the EV3 brick.
 
-        Parameters
-        ----------
-        mode : str
-            The light mode: `solid`, `pulsing`, `off`
-            Default value is `solid`
-        color : str
-            The light color: `green`, `orange`, `red`
-            Default value is `green`
+        :param mode: The light mode: ``solid``, ``pulsing``, ``off``
+        :type mode: str
+        :param color: The light color: ``green``, ``orange``, ``red``
+        :type color: str
 
-        Returns
-        -------
-        None.
-
-        Example
-        -------
         >>> myev3.set_statuslight(mode='pulsing', color='orange')
 
         """
@@ -211,24 +190,13 @@ class LegoEV3:
         """
         Play a tone on the EV3 brick.
 
-        Parameters
-        ----------
-        volume : int
-            The volume of the played tone: 0 to 100
-            Default value is 10
-        frequency : int
-            The frequency (Hz) of the played tone: 0 to 10000
-            Default frequency is 440 Hz
-        duration : float
-            The duration (s) of the played tone: 0 to 5
-            Default duration is 1.0 s
+        :param volume: The volume of the played tone: ``0`` to ``100``
+        :type volume: int
+        :param frequency: The frequency (Hz) of the played tone: ``0`` to ``10000``
+        :type frequency: int
+        :param duration: The duration (s) of the played tone: ``0`` to ``5``
+        :type duration: float
 
-        Returns
-        -------
-        None.
-
-        Example
-        -------
         >>> myev3.play_tone(volume=5, frequency=880, duration=0.5)
 
         """
@@ -379,14 +347,14 @@ class LegoEV3:
         return self._get_deviceoutput(data, dataset, type='SI')
 
     def _read_inputdevicereadyPCT(self, layer=1, portnum=1, mode=0, dataset=1):
-        # opINPUT_DEVICE, READY_SI - Read sensor input in SI format
+        # opINPUT_DEVICE, READY_SI - Read sensor input in percent format
         cmd = io.DirectCommand.read_inputdevicereadyPCT(layer, portnum, mode, dataset)
         self._commhandle.send(cmd)
         data = self._receive_reply(type='other')
         return self._get_deviceoutput(data, dataset, type='PCT')
 
     def _read_inputdevicereadyRAW(self, layer=1, portnum=1, mode=0, dataset=1):
-        # opINPUT_DEVICE, READY_SI - Read sensor input in SI format
+        # opINPUT_DEVICE, READY_SI - Read sensor input in raw format
         cmd = io.DirectCommand.read_inputdevicereadyRAW(layer, portnum, mode, dataset)
         self._commhandle.send(cmd)
         data = self._receive_reply(type='other')

@@ -33,7 +33,7 @@ class LegoEV3:
 
     Set up WiFi connection between host and EV3 brick
 
-        >>> myev3 = LegoEV3(commtype='wifi', IPaddress='192.168.0.19, deviceID='001653470e58')
+        >>> myev3 = LegoEV3(commtype='wifi', IPaddress='192.168.0.19', deviceID='001653470e58')
         >>> myev3.display_info()
         >>> myev3.close()
 

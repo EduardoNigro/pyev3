@@ -1,5 +1,5 @@
 
-pyEV3
+pyev3
 =====
 
 .. toctree::

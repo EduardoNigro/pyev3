@@ -22,7 +22,7 @@ import sphinx_rtd_theme
 
  # -- Project information -----------------------------------------------------
 
-project = 'pyev3'
+project = 'pyEV3'
 copyright = '2021, Eduardo Nigro'
 author = 'Eduardo Nigro'
 

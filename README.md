@@ -1,7 +1,7 @@
 # pyev3
 **pyev3** can be used to interact with the **LEGO Mindstorms EV3**.
 
-Send direct commands to the EVR from your PC (local host) using a USB or WiFi connection. **pyev3** is an alternative to [pybricks](https://pybricks.com/ev3-micropython/), which requires booting your EV3 brick from an SD card, and where micropython programs run in the EV3 memory. With **pyev3** you can run the EV3 as is. Just connect it to a USB port, or create a WiFi connection, and you're good to go!
+Send direct commands to the EVR from your PC (local host) using a USB or WiFi connection. **pyev3** is an alternative to [pybricks](https://pybricks.com/ev3-micropython/), which requires booting the EV3 brick from an SD card, and where micropython programs run in the EV3 memory. With **pyev3** you can run the EV3 as is. Just connect it to a USB port, or create a WiFi connection, and you're good to go!
 
 ## Classes
 Interact with each one of the EV3 devices through simple methods and properties, implemented in the following classes:
@@ -20,7 +20,7 @@ py -m pip install pyev3
 
 ## Documentation
 
-Comprehensive documentation for **pyev3** is available [here](https://eduardonigro.github.io/pyev3/index.html#).
+Comprehensive documentation for **pyev3** is available [here](https://eduardonigro.github.io/pyev3/).
 
 ## Example Code
 Start and stop a motor using the touch sensor. The motor speed is proportional to ambient light intensity.

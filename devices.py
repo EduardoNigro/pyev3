@@ -5,7 +5,7 @@ Motor and sensor classes implement Direct Commands in a way that simplifies
 the interaction with the EV3 devices.
 
 Author: Eduardo Nigro
-    rev 0.0.2
+    rev 0.0.3
     2021-12-17
 """
 import numpy as np

@@ -10,7 +10,7 @@ File I/O and LCD commands are left for those with a brave spirit.
 Note: Use code folding at the method level to improve readability.
 
 Author: Eduardo Nigro
-    rev 0.0.2
+    rev 0.0.3
     2021-12-17
 """
 import time

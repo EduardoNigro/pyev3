@@ -3,7 +3,7 @@ Mock brick.py file for documentation purposes.
 Had to create this one because GitHub doesn't want to install the hidapi
 dependency in the original brick.py.
 
-    rev 0.0.2
+    rev 0.0.3
     2021-12-17
 
 """

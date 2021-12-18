@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>devices &mdash; pyev3 0.0.1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>devices &mdash; pyev3 0.0.2 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -75,8 +75,8 @@
 <span class="sd">the interaction with the EV3 devices.</span>
 
 <span class="sd">Author: Eduardo Nigro</span>
-<span class="sd">    rev 0.0.1</span>
-<span class="sd">    2021-10-24</span>
+<span class="sd">    rev 0.0.2</span>
+<span class="sd">    2021-12-17</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -134,6 +134,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Contains the motor output mode.</span>
 <span class="sd">        It can be either ``&#39;speed&#39;`` or ``&#39;power&#39;`` (`read/write`).</span>
+<span class="sd">        The motor has to be stopped before switching modes.</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputmode</span>

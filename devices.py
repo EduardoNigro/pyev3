@@ -15,15 +15,15 @@ class Motor:
     """
     The class to represent the EV3 motor.
     
-    Set up a motor on output port 'B'
+    Set up a motor on output port ``'B'``
 
         >>> from pyev3.brick import LegoEV3
         >>> from pyev3.devices import Motor
         >>> myev3 = LegoEV3(commtype='usb')
         >>> mymotor = Motor(myev3, port='B')
 
-    Set up a motor on output port ``A`` of the first brick and port ``B``
-    of the second brick.
+    Set up a motor on output port ``'A'`` of the first brick and port ``'B'``
+    of the second brick
 
         >>> mymotor1 = Motor(myev3, layer=1, port='A')
         >>> mymotor2 = Motor(myev3, layer=2, port='B')

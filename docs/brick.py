@@ -5,7 +5,7 @@ Mock brick.py file for documentation purposes
 
 class LegoEV3:
     """
-    The class to represent the LEGO EV3 brick.
+    Agh! The class to represent the LEGO EV3 brick.
     You can use LegoEV3 to interact with the EV3 brick.
 
     Set up USB connection between host and EV3 brick.

@@ -49,7 +49,7 @@ class LegoEV3:
 
     .. note::
         1. Always use the `close()` method before opening a new connection.
-        2. Try a USB connection first. It's easier to set up and much faster.
+        2. Try a USB connection first. It's easier to set up and faster.
 
     """
     def __init__(self, commtype='usb', IPaddress=None, deviceID=None):

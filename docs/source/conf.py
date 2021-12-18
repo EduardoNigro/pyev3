@@ -52,3 +52,6 @@ autodoc_member_order = 'groupwise'
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_title = 'Documentation'
+html_logo = '../images/logo.png'
+html_favicon = '../images/favicon.png'

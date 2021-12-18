@@ -16,7 +16,7 @@ pyev3
 
 Send direct commands to the **EV3** from your PC using a USB or WiFi connection.
 **pyev3** is an alternative to `pybricks <https://docs.pybricks.com/en/stable/index.html#>`__,
-which requires booting your EV3 brick from an SD card, and where micropython programs run
+which requires booting the EV3 brick from an SD card, and where micropython programs run
 in the brick's memory. With **pyev3** you can use Python to run the EV3 as is. Just connect
 it to a USB port, or create a WiFi connection, and you're good to go!
 
@@ -24,23 +24,23 @@ it to a USB port, or create a WiFi connection, and you're good to go!
 Step 1: Install pyev3
 ---------------------
 
-If you already have *Python* and an *IDE* (*Integrated Development Environment*) to go along with it,
-just install the **pyev3** package:
+If you already have *Python* and an *IDE* (*Integrated Development Environment*)
+to go along with it, just install the **pyev3** package:
 
 >>> py -m pip install pyev3
 
 Otherwise, start by installing `Python <https://www.python.org/downloads/>`__ and then an IDE.
-If you want to code like a pro, I strongly encourage `VSCode <https://code.visualstudio.com/download>`__.
+Want to code like a pro? I strongly encourage `VSCode <https://code.visualstudio.com/download>`__.
 
 
 Step 2: Code away!
 ------------------
 
-Once the ``pip`` installation has finished, reference the different classes in the menu on the left
-to see how to interact with motors, sensors and the EV3 brick itself.
+Once the ``pip`` installation has finished, reference the different classes in the menu
+on the left to see how to interact with motors, sensors and the EV3 brick itself.
 
-Below is an example code that makes the motor speed proportional to the ambient light intensity.
-You can also start and stop the motor using the touch sensor!
+Below is an example code where you can also start and stop the motor using the touch
+sensor. The motor speed is proportional to the ambient light intensity!
 
 .. code-block:: python
 

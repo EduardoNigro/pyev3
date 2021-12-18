@@ -3,7 +3,6 @@ pyev3
 =====
 
 .. toctree::
-   :caption: pyev3 Classes
    :hidden:
 
    LegoEV3

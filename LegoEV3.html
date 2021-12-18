@@ -36,8 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">pyev3 Classes</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LegoEV3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Motor.html">Motor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Touch.html">Touch</a></li>
@@ -94,6 +93,114 @@ Once the brick is powered up, you can use a PC to communicte with it in two ways
 </li>
 </ul>
 <img alt="_images/LegoEV3.png" src="_images/LegoEV3.png" />
+<dl class="class">
+<dt id="brick.LegoEV3">
+<em class="property">class </em><code class="sig-prename descclassname">brick.</code><code class="sig-name descname">LegoEV3</code><span class="sig-paren">(</span><em class="sig-param">commtype='usb'</em>, <em class="sig-param">IPaddress=None</em>, <em class="sig-param">deviceID=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/brick.html#LegoEV3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#brick.LegoEV3" title="Permalink to this definition"></a></dt>
+<dd><p>Agh! The class to represent the LEGO EV3 brick.
+You can use LegoEV3 to interact with the EV3 brick.</p>
+<p>Set up USB connection between host and EV3 brick.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.brick</span> <span class="kn">import</span> <span class="n">LegoEV3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span> <span class="o">=</span> <span class="n">LegoEV3</span><span class="p">(</span><span class="n">commtype</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">display_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Set up WiFi connection between host and EV3 brick</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span> <span class="o">=</span> <span class="n">LegoEV3</span><span class="p">(</span><span class="n">commtype</span><span class="o">=</span><span class="s1">&#39;wifi&#39;</span><span class="p">,</span> <span class="n">IPaddress</span><span class="o">=</span><span class="s1">&#39;192.168.0.19, deviceID=&#39;</span><span class="mf">001653470e58</span><span class="s1">&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">display_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>commtype</strong> (<em>str</em>) – The type of communication with the brick. <code class="docutils literal notranslate"><span class="pre">'usb'</span></code> or <code class="docutils literal notranslate"><span class="pre">'wifi'</span></code>.</p></li>
+<li><p><strong>IPaddress</strong> (<em>str</em>) – The IP address assigned to the EV3 brick.</p></li>
+<li><p><strong>deviceID</strong> (<em>str</em>) – The individual device ID of the EV3 brick.
+Connect to the brick using <cite>commtype=’usb’</cite> and use the
+<cite>display_info()</cite> method to retrieve the ID of the brick.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Always use the <cite>close()</cite> method before opening a new connection.</p></li>
+<li><p>Try a USB connection first. It’s easier to set up and much faster.</p></li>
+</ol>
+</div>
+<dl class="method">
+<dt id="brick.LegoEV3.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/brick.html#LegoEV3.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#brick.LegoEV3.close" title="Permalink to this definition"></a></dt>
+<dd><p>Close the EV3 brick connection.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="brick.LegoEV3.display_info">
+<code class="sig-name descname">display_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/brick.html#LegoEV3.display_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#brick.LegoEV3.display_info" title="Permalink to this definition"></a></dt>
+<dd><p>Displays a summary with the brick information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="brick.LegoEV3.play_tone">
+<code class="sig-name descname">play_tone</code><span class="sig-paren">(</span><em class="sig-param">volume=10</em>, <em class="sig-param">frequency=440</em>, <em class="sig-param">duration=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/brick.html#LegoEV3.play_tone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#brick.LegoEV3.play_tone" title="Permalink to this definition"></a></dt>
+<dd><p>Play a tone on the EV3 brick.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>volume</strong> (<em>int</em>) – The volume of the played tone: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code></p></li>
+<li><p><strong>frequency</strong> (<em>int</em>) – The frequency (Hz) of the played tone: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">10000</span></code></p></li>
+<li><p><strong>duration</strong> (<em>float</em>) – The duration (s) of the played tone: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">5</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">play_tone</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">880</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="brick.LegoEV3.set_statuslight">
+<code class="sig-name descname">set_statuslight</code><span class="sig-paren">(</span><em class="sig-param">mode='solid'</em>, <em class="sig-param">color='green'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/brick.html#LegoEV3.set_statuslight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#brick.LegoEV3.set_statuslight" title="Permalink to this definition"></a></dt>
+<dd><p>Set the status light of the EV3 brick.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – The light mode: <code class="docutils literal notranslate"><span class="pre">'solid'</span></code>, <code class="docutils literal notranslate"><span class="pre">'pulsing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'off'</span></code></p></li>
+<li><p><strong>color</strong> (<em>str</em>) – The light color: <code class="docutils literal notranslate"><span class="pre">'green'</span></code>, <code class="docutils literal notranslate"><span class="pre">'orange'</span></code>, <code class="docutils literal notranslate"><span class="pre">'red'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span><span class="o">.</span><span class="n">set_statuslight</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;pulsing&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="brick.LegoEV3.batterylevel">
+<em class="property">property </em><code class="sig-name descname">batterylevel</code><a class="headerlink" href="#brick.LegoEV3.batterylevel" title="Permalink to this definition"></a></dt>
+<dd><p>Contains the EV3 battery level in <cite>%</cite> (<cite>read only</cite>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="brick.LegoEV3.connectedsensors">
+<em class="property">property </em><code class="sig-name descname">connectedsensors</code><a class="headerlink" href="#brick.LegoEV3.connectedsensors" title="Permalink to this definition"></a></dt>
+<dd><p>Contains a list with the sensors connected to the EV3 (<cite>read only</cite>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="brick.LegoEV3.devmode">
+<em class="property">property </em><code class="sig-name descname">devmode</code><a class="headerlink" href="#brick.LegoEV3.devmode" title="Permalink to this definition"></a></dt>
+<dd><p>Contains a developer mode flag. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>. 
+When <code class="docutils literal notranslate"><span class="pre">True</span></code>, communication info is displayed after
+each direct command (<cite>read/write</cite>).</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

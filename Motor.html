@@ -78,15 +78,15 @@
 <dt id="devices.Motor">
 <em class="property">class </em><code class="sig-prename descclassname">devices.</code><code class="sig-name descname">Motor</code><span class="sig-paren">(</span><em class="sig-param">ev3handle</em>, <em class="sig-param">layer=1</em>, <em class="sig-param">port='A'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/devices.html#Motor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#devices.Motor" title="Permalink to this definition"></a></dt>
 <dd><p>The class to represent the EV3 motor.</p>
-<p>Set up a motor on output port ‘B’</p>
+<p>Set up a motor on output port <code class="docutils literal notranslate"><span class="pre">'B'</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.brick</span> <span class="kn">import</span> <span class="n">LegoEV3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyev3.devices</span> <span class="kn">import</span> <span class="n">Motor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">myev3</span> <span class="o">=</span> <span class="n">LegoEV3</span><span class="p">(</span><span class="n">commtype</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Set up a motor on output port <code class="docutils literal notranslate"><span class="pre">A</span></code> of the first brick and port <code class="docutils literal notranslate"><span class="pre">B</span></code>
-of the second brick.</p>
+<p>Set up a motor on output port <code class="docutils literal notranslate"><span class="pre">'A'</span></code> of the first brick and port <code class="docutils literal notranslate"><span class="pre">'B'</span></code>
+of the second brick</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor1</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mymotor2</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">myev3</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 </pre></div>

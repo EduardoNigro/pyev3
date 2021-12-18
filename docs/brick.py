@@ -1,11 +1,17 @@
 """
-Mock brick.py file for documentation purposes
+Mock brick.py file for documentation purposes.
+Had to create this one because GitHub doesn't want to install the hidapi
+dependency in the original brick.py.
+
+    rev 0.0.2
+    2021-12-17
+
 """
 
 
 class LegoEV3:
     """
-    Agh! The class to represent the LEGO EV3 brick.
+    The class to represent the LEGO EV3 brick.
     You can use LegoEV3 to interact with the EV3 brick.
 
     Set up USB connection between host and EV3 brick.

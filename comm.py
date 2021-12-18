@@ -3,8 +3,8 @@ comm.py contains the classes used to communicate with the EV3 brick.
 Classes that support USB and TCP/IP communication are implemented.
 
 Author: Eduardo Nigro
-    rev 0.0.1
-    2021-10-24
+    rev 0.0.2
+    2021-12-17
 """
 import hid
 import socket

@@ -18,6 +18,10 @@ Interact with each one of the EV3 devices through simple methods and properties,
 py -m pip install pyev3
 ```
 
+## Documentation
+
+Comprehensive documentation for **pyev3** is available [here](https://eduardonigro.github.io/pyev3/index.html#).
+
 ## Example Code
 Start and stop a motor using the touch sensor. The motor speed is proportional to ambient light intensity.
 

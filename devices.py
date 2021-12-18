@@ -5,8 +5,8 @@ Motor and sensor classes implement Direct Commands in a way that simplifies
 the interaction with the EV3 devices.
 
 Author: Eduardo Nigro
-    rev 0.0.1
-    2021-10-24
+    rev 0.0.2
+    2021-12-17
 """
 import numpy as np
 import time
@@ -64,6 +64,7 @@ class Motor:
         """
         Contains the motor output mode.
         It can be either ``'speed'`` or ``'power'`` (`read/write`).
+        The motor has to be stopped before switching modes.
         
         """
         return self._outputmode

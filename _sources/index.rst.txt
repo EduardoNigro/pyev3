@@ -87,4 +87,4 @@ Issues and questions
 --------------------
 
 If you have a feature request, a bug report, or even a question, please open an
-`issue on GitHub <https://github.com/gpiozero/gpiozero/issues/new>`__.
+`issue on GitHub <https://github.com/EduardoNigro/pyev3/issues/new>`__.

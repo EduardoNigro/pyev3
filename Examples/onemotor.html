@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Motor &mdash; Documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Two Motors" href="twomotors.html" />
+    <link rel="prev" title="Examples" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pyEV3<img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LegoEV3.html">LegoEV3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Motor.html">Motor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Touch.html">Touch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Color.html">Color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Ultrasonic.html">Ultrasonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Infrared.html">Infrared</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Gyro.html">Gyro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">One Motor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twomotors.html">Two Motors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counter.html">Counter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightintensity.html">Light Intensity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obstacle.html">Obstacle Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracking.html">Infrared Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gyrodata.html">Gyro Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Utils.html">Utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyEV3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Examples</a> &raquo;</li>
+      <li>One Motor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Examples/onemotor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="one-motor">
+<h1>One Motor<a class="headerlink" href="#one-motor" title="Permalink to this headline"></a></h1>
+<p>This example <a class="reference internal" href="#code1motor"><span class="std std-ref">code</span></a> shows how to precisely apply a time-based
+excitation (in this case a sine wave) to a single motor. Keeping track of the
+current execution time is the key to achieving that. The motor speed is
+calculated as the derivative of the tacho angular position <em>output</em>.</p>
+<img alt="../_images/Motor-Example-1A.png" src="../_images/Motor-Example-1A.png" />
+<img alt="../_images/Motor-Example-1B.png" src="../_images/Motor-Example-1B.png" />
+<div class="highlight-python notranslate" id="code1motor"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; onemotor.py</span>
+
+<span class="sd">Run one motor with a sinusoidal speed input.</span>
+
+<span class="sd">Setup:</span>
+<span class="sd">    Connect one large motor to port &#39;A&#39;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Importing modules and classes</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pyev3.utils</span> <span class="kn">import</span> <span class="n">plot_line</span>
+<span class="kn">from</span> <span class="nn">pyev3.brick</span> <span class="kn">import</span> <span class="n">LegoEV3</span>
+<span class="kn">from</span> <span class="nn">pyev3.devices</span> <span class="kn">import</span> <span class="n">Motor</span>
+
+<span class="c1"># Defining parameters (for one motor)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Period of sine wave (s)</span>
+<span class="n">u0</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c1"># Motor speed amplitude (%)</span>
+<span class="n">tstop</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Sine wave duration (s)</span>
+
+<span class="c1"># Pre-allocating output arrays</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Creating LEGO EV3 objects</span>
+<span class="n">ev3</span> <span class="o">=</span> <span class="n">LegoEV3</span><span class="p">()</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">ev3</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+
+<span class="c1"># Initializing motor</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">outputmode</span> <span class="o">=</span> <span class="s1">&#39;speed&#39;</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">reset_angle</span><span class="p">()</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># Initializing current time stamp and starting clock</span>
+<span class="n">tcurr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tstart</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="c1"># Running motor sine wave output</span>
+<span class="k">while</span> <span class="n">tcurr</span> <span class="o">&lt;=</span> <span class="n">tstop</span><span class="p">:</span>
+    <span class="c1"># Getting current time (s)</span>
+    <span class="n">tcurr</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span>
+    <span class="c1"># Assigning current motor sinusoidal</span>
+    <span class="c1"># output using the current time stamp</span>
+    <span class="n">motor</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">u0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">tcurr</span><span class="p">)</span>
+    <span class="c1"># Updating output arrays</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcurr</span><span class="p">)</span>
+    <span class="n">theta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">motor</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+<span class="c1"># Stopping motor and closing brick connection</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">ev3</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Calculating motor angular velocity (rad/s)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">360</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Plotting results</span>
+<span class="n">plot_line</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">theta</span><span class="p">],</span> <span class="n">yname</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Angular Position (deg.)&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plot_line</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">w</span><span class="p">],</span> <span class="n">yname</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Angular velocity (rad/s)&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="twomotors.html" class="btn btn-neutral float-right" title="Two Motors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Eduardo Nigro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -2,18 +2,6 @@
 pyev3
 =====
 
-.. toctree::
-   :hidden:
-
-   LegoEV3
-   Motor
-   Touch
-   Color
-   Ultrasonic
-   Infrared
-   Gyro
-
-
 Send direct commands to the **EV3** from your PC using a USB or WiFi connection.
 **pyev3** is an alternative to `pybricks <https://docs.pybricks.com/en/stable/index.html#>`__,
 which requires booting the EV3 brick from an SD card, and where micropython programs run
@@ -88,3 +76,19 @@ Issues and questions
 
 If you have a feature request, a bug report, or even a question, please open an
 `issue on GitHub <https://github.com/EduardoNigro/pyev3/issues/new>`__.
+
+
+.. toctree::
+   :hidden:
+
+   LegoEV3
+   Motor
+   Touch
+   Color
+   Ultrasonic
+   Infrared
+   Gyro
+   Examples/index
+   Utils
+
+

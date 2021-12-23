@@ -480,7 +480,7 @@ class Ultrasonic(Sensor):
     :type portnum: int
     :param inputmode:
         * ``'distance'`` measure distance to an object in cm
-        * ``'listen'`` presence of other ultrasound source
+        * ``'listen'`` detect presence of other ultrasound source
     :type inputmode: str
 
     """
